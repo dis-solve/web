@@ -1,0 +1,59 @@
+{% macro hr() -%}
+  <div style="color:grey;padding:10px">&middot;</div>
+{%- endmacro %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mini.css@3.0.1/dist/mini-default.min.css" integrity="sha256-Tb0Wikpef+a1/IiQ0gXyT9PsM654/3hNHHdxMwEhBLA=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='o.css')}}">
+    <link rel="shortcut icon" href="{{url_for('static', filename='favicon.png')}}" />
+    <!-- Required meta tags -->
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+
+  <body>
+    {% if not hide_navigation %}
+      <header>
+        <a href="{{url_for('entrypoint')}}" class="logo">
+          <img src="{{url_for('static', filename='id/dissolve.png')}}">
+          d.i.s.solve
+        </a>
+        <div style="float:right">
+        {% for name, endpoint, icon in [
+          ('', 'projects', 'fas fa-history'),
+          ('', 'contact', 'fas fa-paper-plane')] -%}
+            <a class="button" href="{{url_for(endpoint)}}"><i class="{{icon}}"></i></a>
+        {%- endfor %}
+        </div>
+      </header>
+    {% endif %}
+{#
+    <div style="text-align:center">
+      <div style="font-size:50px;margin:25px">
+        d.i.s.solve
+      </div>
+      digital infrastructure specialized solvers
+      {{hr()}}
+    </div>
+#}
+
+    <main class="container" style="{{'' if no_center else 'text-align:center'}}">
+      {% block body %}{% endblock %}
+		</main>
+
+    <footer style="margin-top:40px">
+      &copy; <time>{{current_year}}</time>
+    </footer>
+
+    <script>
+      /* Helper for post-br world achieved by the CSS directive `white-space: pre-line` */
+      for (let p of document.getElementsByTagName('p')) p.innerHTML = p.innerHTML.trim();
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+    {% block script %}{% endblock %}
+
+  </body>
+</html>

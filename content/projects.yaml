@@ -1,0 +1,25 @@
+"Carrier-Grade Device Monitoring":
+  case: |
+    An Internet access provider is running carrier-grade power supplies for
+    critical telecom equipement in multiple sites.
+    The provider cannot find a suitable monitoring device for their specific use-case.
+  mission: |
+    Find an economical integrated solution to monitor the critical power supply.
+    It must be reliable, easy to maintain, respect carrier-grade standards,
+    and integrate with the monitoring system, the physical power supply
+    and it must be moutable in the physical rackspace.
+    The time to recovery in case of faillure must be quick and economical.
+  solution: |
+    We created an integrated solution by engineering a HAT that physically connects to the
+    service port of the power supply, and a Raspberry Pi to run the power supply monitoring code
+    and communicate with the global monitoring system.
+    We also engineered a 3D-printed case for mounting the device securely and
+  rationale: |
+    The raspberry pi is efficient to implement, deploy and the failure strategy is a simple set of generic spares.
+    The replacement is quick and easy with auto-config according its mac address and a configuration file in the internal gitlab repository.
+    It is also safe thanks to a fallback local configuration file and a CLI-tool for diagnosis in case of setup failure.
+    The HAT has a double power supply feature which is the carrier-grade equipment standard.
+  url:
+    http://github...
+  images:
+    - psu-monitoring.jpg

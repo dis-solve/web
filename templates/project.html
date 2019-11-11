@@ -1,0 +1,29 @@
+{% extends "html" %}
+{% set no_center = True %}
+{% block body %}
+
+{% if project.images %}
+  <img src="{{url_for('static', filename='projects/'+project.images[0])}}"
+       style="position: absolute;
+              z-index: -1000;
+              left: 0px;
+              opacity: 0.067;
+              filter: blur(1px);
+              width: 100%;
+              _top: -75px;">
+{% endif %}
+
+<p>
+  <strong>{{name}}</strong>
+  {{hr()}}
+</p>
+{% for title, text in project.items() %}
+  <p>
+    <strong>{{title.title()}}</strong>
+  </p>
+  <p>
+    {{text}}
+  </p>
+{% endfor %}
+
+{% endblock %}

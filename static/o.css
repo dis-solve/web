@@ -1,0 +1,27 @@
+:root {
+}
+
+html, * {
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+p {
+  white-space: pre-line;
+}
+
+img {
+  filter: grayscale(50%);
+  transition: filter 0.33s;
+}
+
+img:hover,
+header:hover img {
+  filter: grayscale(0%) brightness(120%);
+}
+
+header img {
+  height: 100%;
+  vertical-align: middle;
+}

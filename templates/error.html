@@ -1,0 +1,29 @@
+{% extends "html" %}
+{% block title %}Oops!{% endblock %}
+{% block body %}
+
+<strong>
+  Oops, sorry. That's an error.
+</strong>
+{% if description %}
+  <p>
+    {{description|safe}}
+  </p>
+{% else %}
+  <p>
+    We are serving you a <strong>{{http_status}}</strong> status code and this is not what you expected.
+  </p>
+  <p>
+    The service said: <strong>{{error}} for {{cause}}</strong>.
+  </p>
+  {{hr()}}
+  <p>
+    We must admit- we don't know what just happended, <strong>yet</strong>.
+  </p>
+{% endif %}
+
+<p>
+  <strong>Always feel free</strong> to <a href="{flask.url_for("contact")}">contact us</a> !
+</p>
+
+{% endblock %}

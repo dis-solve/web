@@ -1,0 +1,31 @@
+{% extends "html" %}
+{% block body %}
+
+<div class="center">
+
+  <p>
+    <strong>A selection of projects</strong>
+  </p>
+  <p>
+  {% for name, project in projects.items() %}
+    <a href="{{url_for('project', hash=hashes[name])}}">{{name}}</a>
+  {% endfor %}
+  </p>
+
+  {{hr()}}
+  <p>
+    <strong>Our experience with companies</strong>
+  </p>
+  <p>
+    {% for company in companies %}
+      <img style="vertical-align:bottom" src="{{url_for('static', filename=company)}}">
+      {{hr()}}
+    {% endfor %}
+  </p>
+  <p>
+    Experience background in a variety environments smoothes
+    the understanding of subtle differences.
+  </p>
+</div>
+
+{% endblock %}
